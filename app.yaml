@@ -1,4 +1,4 @@
-application: new-project-template
+application: pythoniter
 version: 1
 runtime: python27
 api_version: 1
@@ -9,9 +9,15 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /staticfiles
+  static_dir: staticfiles
+
 - url: .*
   script: main.app
 
 libraries:
 - name: webapp2
   version: "2.5.1"
+- name: jinja2
+  version: "2.6"
+

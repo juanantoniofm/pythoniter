@@ -14,13 +14,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os
 import webapp2
+import jinja2
+import logging
+
 import StringIO
 import pythontidy as pt
-
+template_path=os.path.dirname(__file__) + "/templates"
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(template_path))
+logging.debug("The path for templates is")
+logging.debug(template_path)
 
 class MainHandler(webapp2.RequestHandler):
- 
+
+    def renderAndWrite(self, values, template="formater.html"):
+        """render values in the template"""
+        template = jinja_environment.get_template(template)
+        self.response.out.write(template.render(values))
+
     def formater(self, pythonshit):
         #- receive text in string format
         #- convert it to file-like object
@@ -31,33 +44,8 @@ class MainHandler(webapp2.RequestHandler):
         #- pass it through the tidyer
         pt.tidy_up(inf, ouf)
         pythonshit = ouf.getvalue()
-
-
         #- return the output as string
         return pythonshit
-
-    formCutre="""
-        <form action="/" method="post">
-        Autor-cantamornings: <input type="text" name="cantamornings">
-        <br />
-        <textarea name="chorizo" rows="10" cols="20">{0}</textarea>
-        <br />
-
-        <input type=submit value="bonitificar" >
-        <br />
-        </form>
-        """
-
-    def renderCutre(self, chorizo):
-        """imprime un chorizo en html por pantalla """
-        cutrangadaHTML="""
-        <html><head><title>Mierdoso</title></head>
-        <body>
-        {0}
-        </body>
-        </html>
-        """
-        self.response.out.write(cutrangadaHTML.format(chorizo))
 
     def post(self):
         """get receive text and prettyprint it"""
@@ -66,12 +54,11 @@ class MainHandler(webapp2.RequestHandler):
         #- send it to the formater
         bonitico = self.formater(txt)
         #- and show a website with the pretty code 
-        formCutre=self.formCutre.format(bonitico)
-        self.renderCutre(formCutre)
+        self.renderAndWrite({"codechunk": bonitico})
         
     def get(self):
         """shows just atext box for input"""
-        self.renderCutre(self.formCutre.format("Aqui pegar tu codigo python fulero"))
+        self.renderAndWrite({"codechunk" : "Aqui pegar tu python fulero"})
         
 
 app = webapp2.WSGIApplication([
