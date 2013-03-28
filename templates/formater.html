@@ -28,12 +28,14 @@
 			<br />
 			<input type=submit value="bonitificar" > <br />
 		</form>
+		{% if error %}
 		<div id="errorConsole">
 			<h3>Error Console</h3>
 			<div class="error">
 				<p>Error example</p>
 			</div>
 		</div>
+		{% endif %}
 	</div>
 	<p>Powered by: <a href="http://juanantonio.fm">Juan Antonio FM</a> || <a href="http://appengine.google.com">Google Appengine</a></p>
 	</body>

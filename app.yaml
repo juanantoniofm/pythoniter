@@ -14,6 +14,8 @@ handlers:
 
 - url: .*
   script: main.app
+- url: /down
+  script: main.app
 
 libraries:
 - name: webapp2

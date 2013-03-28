@@ -4,11 +4,21 @@ body{
 	background-color:#EEE9D6;  //soft bone white
 }
 
+h2{
+	margin: 10% auto 2%;
+}
+
 #container{
 	width: 50%;
 	text-align: left;
 	margin: 0 auto;
 	color: #576E74;
+}
+
+.mini{
+	font-size:small;
+	font-family:Arial, Sans-Serif;
+	margin: 0 0 9%;
 }
 textarea{
 	width: 100%;
