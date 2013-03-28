@@ -28,7 +28,7 @@ textarea{
 
 #errorConsole{
 	padding: 0.25% 2.5%;
-	color:grey;
+	color:#93a1a1;  //kinda light grey-blueish
 	background-color:#002A38;  //dark blueish
 }
 

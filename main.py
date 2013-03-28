@@ -61,7 +61,7 @@ class MainHandler(webapp2.RequestHandler):
         self.renderAndWrite({"codechunk" : "Aqui pegar tu python fulero"})
         
 
-class DownHandler(webapp2.RequestHandler):
+class DownHandler(MainHandler):
     def post(self):
         self.renderAndWrite({"codechunk" :
                              self.formater(
@@ -70,7 +70,23 @@ class DownHandler(webapp2.RequestHandler):
     def get(self):
         self.response.out.write("""Visit this using POST to upload your code, and
                                 download it as a file""")
+        
+
+class ZenHandler(MainHandler):
+    def post(self):
+        self.renderAndWrite({"codechunk" :
+                             self.formater(
+                                 self.request.get('chorizo'))},
+                           "zen.html")
+                             
+    def get(self):
+        self.renderAndWrite({"codechunk" : "Here goes your Python"},
+                            "zen.html")
+
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/zen', ZenHandler),
     ('/down', DownHandler)
 ], debug=True)

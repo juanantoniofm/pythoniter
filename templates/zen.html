@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Pythoiter - Pretty Python Online Formatter</title>
+		<link type="text/css" rel=stylesheet href="/staticfiles/zen.css" media=screen />
+	</head>
+	<body>
+	<div id="container">
+		<form action="/zen" method="post">
+			<div id="zenbar">
+				<span class="mini" >Switch to <a href="/">Normal Mode</a></span>
+				<span class="mini">Powered by: <a href="http://juanantonio.fm">Juan Antonio FM</a> ||
+				<a href="http://appengine.google.com">Google Appengine</a></span>
+				<input class="mini" type=submit value="Beautify this!" class="button"> 
+				<!-- to close zenmode go back -->
+			</div>
+			<textarea name="chorizo" rows="10" cols="20">{{ codechunk }}</textarea>
+			<br />
+		</form>
+		{% if error %}
+		<div id="errorConsole">
+			<h3>Error Console</h3>
+			<div class="error">
+				<p>Error example</p>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	</body>
+</html>
