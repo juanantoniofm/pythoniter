@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>Mierdoso</title>
+		<link type="text/css" rel=stylesheet href="/staticfiles/staila.css" media=screen />
+	</head>
+	<body>
+	<div id="container">
+		<h2>Python Formatter</h2>
+		<div class="mini">
+			<span><a href="gihub.com/juanantonio.fm/pythonizer">Fork me</a> on github.com</span>
+			||
+			<span><a href="juanantonio.fm/pythonformater">About this</a> appengine tool</span>
+			||
+			<span><a href="twitter.com/juanatoniofm">Report or Sugest</a> a feature</span>
+		</div>
+		<div class="content">
+			<p>Welcome. Use this text box to input your dirty-formatted python code, and get a nice, well ordered file.</p>
+			<p>If you have made syntax mistakes, It will complain and not give you the cookie ;)</p>
+		</div>
+		<form action="/" method="post">
+			Autor: <br />
+			<input type="text" name="cantamornings">
+			<br />
+			<h3>Input Your Code: </h3>
+			<textarea name="chorizo" rows="10" cols="20">
+{{ codechunk }}
+			</textarea>
+			<br />
+			<input type=submit value="bonitificar" > <br />
+		</form>
+		<div id="errorConsole">
+			<h3>Error Console</h3>
+			<div class="error">
+				<p>Error example</p>
+			</div>
+		</div>
+	</div>
+	<p>Powered by: <a href="http://juanantonio.fm">Juan Antonio FM</a> || <a href="http://appengine.google.com">Google Appengine</a></p>
+	</body>
+</html>
